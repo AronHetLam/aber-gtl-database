@@ -12,8 +12,8 @@ GO
 
 CREATE TABLE [item_subjects] (
   [subject] nvarchar(255),
-  [I_id] int,
-  PRIMARY KEY ([subject], [I_id])
+  [i_id] int,
+  PRIMARY KEY ([subject], [i_id])
 )
 GO
 
@@ -25,9 +25,9 @@ CREATE TABLE [author] (
 GO
 
 CREATE TABLE [item_authors] (
-  [I_id] int,
-  [A_id] int,
-  PRIMARY KEY ([I_id], [A_id])
+  [i_id] int,
+  [a_id] int,
+  PRIMARY KEY ([i_id], [a_id])
 )
 GO
 
@@ -47,7 +47,7 @@ GO
 CREATE TABLE [item_copy] (
   [barcode] int PRIMARY KEY,
   [destroyed] bit,
-  [I_id] int
+  [i_id] int
 )
 GO
 
@@ -91,16 +91,16 @@ GO
 ALTER TABLE [item_subjects] ADD FOREIGN KEY ([subject]) REFERENCES [subject] ([subject])
 GO
 
-ALTER TABLE [item_subjects] ADD FOREIGN KEY ([I_id]) REFERENCES [item] ([id])
+ALTER TABLE [item_subjects] ADD FOREIGN KEY ([i_id]) REFERENCES [item] ([id])
 GO
 
-ALTER TABLE [item_authors] ADD FOREIGN KEY ([A_id]) REFERENCES [author] ([id])
+ALTER TABLE [item_authors] ADD FOREIGN KEY ([a_id]) REFERENCES [author] ([id])
 GO
 
-ALTER TABLE [item_authors] ADD FOREIGN KEY ([I_id]) REFERENCES [item] ([id])
+ALTER TABLE [item_authors] ADD FOREIGN KEY ([i_id]) REFERENCES [item] ([id])
 GO
 
-ALTER TABLE [item_copy] ADD FOREIGN KEY ([I_id]) REFERENCES [item] ([id])
+ALTER TABLE [item_copy] ADD FOREIGN KEY ([i_id]) REFERENCES [item] ([id])
 GO
 
 ALTER TABLE [loan] ADD FOREIGN KEY ([barcode]) REFERENCES [item_copy] ([barcode])
